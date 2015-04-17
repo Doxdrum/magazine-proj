@@ -15,3 +15,22 @@
 \ExecuteOptions{10pt,twoside}
 \ProcessOptions\relax
 \LoadClass[letterpaper]{scrartcl}
+\RequirePackage[utf8]{inputenc}
+\RequirePackage[T1]{fontenc}   
+\RequirePackage[scaled]{helvet}
+\RequirePackage{xcolor}
+\RequirePackage{titlesec}
+\RequirePackage{calc}
+\RequirePackage{lettrine}
+\RequirePackage{amsmath}
+\RequirePackage{amssymb}
+\RequirePackage{amsfonts}
+\RequirePackage{amstext}
+\RequirePackage{mathrsfs}
+\RequirePackage{dsfont}
+\RequirePackage{enumitem}
+\RequirePackage{listings}
+\RequirePackage[textwidth=182mm,textheight=261mm,hmarginratio=1:1,vmarginratio=1:1]{geometry}
+%% \AtEndPreamble{
+\RequirePackage[linktocpage,colorlinks=true,urlcolor=blue,linkcolor=blue,citecolor=red]{hyperref}
+%% }
