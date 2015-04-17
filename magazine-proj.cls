@@ -43,23 +43,33 @@
 \RequirePackage{array}
 \AtBeginDocument{
   \RequirePackage[linktocpage,colorlinks=true,urlcolor=blue,linkcolor=blue,citecolor=red]{hyperref}
+  %% \@ifpackage{babel}{spanish} {%
+  %%   \addto\captionsspanish{%
+  %%     \renewcommand*\authoredby{Por}
+  %%   }
+  %% }{}
 }
 \setlength{\columnsep}{0.5cm}
-\NewDocumentCommand\lead{ m }{%
-  \vspace*{\stretch{1}}
+\DeclareRobustCommand\authoredby{By}
+\NewDocumentCommand\autarticle{ m }{%
+  \begin{flushleft}
+    \textbf{Por:}~#1
+  \end{flushleft}
+}
+\NewDocumentCommand\lead{ m }{
   \begin{spacing}{2}
     \begin{flushleft}
       {\huge #1}
     \end{flushleft}
   \end{spacing}
-  \vspace*{\stretch{1}}
+  \vfill{}
   \columnbreak{}
 }
 \NewDocumentEnvironment{article}{ O{3} m m m m }{%
   \pdfbookmark{#3}{#2}
   \begin{multicols}{#1}[\section*{#3}]
     \begin{spacing}{1.05}
-      \Autor{#4}
+      \autarticle{#4}
       \vskip-3em{}%
       \lead{#5}
 }{%
