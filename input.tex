@@ -1,0 +1,268 @@
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+%\usepackage{ngerman}
+%\usepackage[expansion=false]{microtype}
+\usepackage[scaled]{helvet}
+
+\renewcommand*{\familydefault}{\sfdefault}
+\renewcommand*{\ttdefault}{txtt}
+\newcommand*{\Menu}[1]{\textit{"‘#1"’}}
+\newcommand*{\Paket}[1]{\textbf{\mbox{#1}}}
+%\newcommand*{\term}[1]{\texttt{\textbf{#1}}}
+%\usepackage[ngerman]{keystroke}
+%\newcommand*{\Taste}[1]{{\small\keystroke{#1}}}
+\usepackage{titlesec}
+\titleformat{\section}{\normalfont\Huge}{}{0mm}{}
+\titleformat{\subsection}%
+{\normalfont\large\bfseries\scshape}{}{0mm}{}
+\usepackage{color}
+\definecolor{dunkelgrau}{gray}{0.25}
+%\definecolor{mittelblau}{rgb}{0.1,0.5,1.0}
+\definecolor{mittelblau}{rgb}{0.27,0.5,1.0}
+\newcommand{\colbox}[3]{\colorbox{#1}{\textcolor{#2}{#3}}}
+\newcommand*{\maincolor}{mittelblau}
+\newcommand*{\maintextcolor}{white}
+\newcommand*{\SetMainColor}[1]
+{\renewcommand*{\maincolor}{#1}}
+\newcommand*{\SetMainTextColor}[1]
+{\renewcommand*{\maintextcolor}{#1}}
+\usepackage{calc}
+\newcommand{\Abschnitt}[1]{%
+\setlength{\fboxsep}{0.2em}%
+\subsection*{\colbox{\maincolor}{\maintextcolor}%
+{\parbox{\linewidth-2\fboxsep-2\fboxrule}{#1}}}%
+\noindent{}%
+}
+\usepackage{lettrine}
+\newcommand{\Initial}[1]{%
+\setcounter{DefaultLines}{3}%
+\renewcommand*{\DefaultLoversize}{-0.2}%
+\setlength{\fboxsep}{0.4em}%
+\lettrine[nindent=-0.1mm,findent=0.7em,lraise=0.3]{%
+\colbox{\maincolor}{\maintextcolor}{%
+\begin{minipage}{0.9em}%
+\centering{}%
+#1 %
+\end{minipage}%
+}%
+}{}%
+}
+\usepackage{amssymb}
+\renewcommand*{\labelitemi}{%
+\textcolor{\maincolor}{\footnotesize$\blacksquare$}%
+}
+\usepackage{enumitem}
+\newenvironment{Auflistung}
+{\begin{itemize}[itemsep=0.0em,leftmargin=*]}
+{\end{itemize}}
+\usepackage{enumitem}
+\newenvironment{Aufzaehlung}
+{\begin{enumerate}[itemsep=0.0em,leftmargin=*]}
+{\end{enumerate}}
+\usepackage[
+  bookmarks=true,
+  bookmarksopen=true,
+  colorlinks=true,
+  urlcolor=url,
+  pdfauthor={Oscar Castillo-Felisola},
+  pdfcreator={Oscar Castillo-Felisola},
+  pdfsubject={Llave de Sol},
+  pdfkeywords={Ciencia, Tecnologia}
+]{hyperref}
+\definecolor{url}{rgb}{0,0,0}
+\newcounter{linkcounter}
+\newcommand*{\Link}[2]%
+[\arabic{linkcounter}\stepcounter{linkcounter}]%
+{~\href{#2}{[#1]}}
+\newenvironment{Quellen}[1][\linewidth]
+{%
+\noindent{}%
+\begin{minipage}{#1}
+\hfill{}%
+\begin{tabular}{r}
+\textcolor{dunkelgrau}%
+{\normalfont\large\scshape Material de apoyo}\\[-1.9ex]
+\textcolor{\maincolor}{\rule{3.7cm}{1.5pt}}\\[-0.8ex]
+\end{tabular}
+\renewcommand*{\labelenumi}{[\theenumi]}
+\begin{small}
+\begin{Aufzaehlung}
+}
+{%
+\end{Aufzaehlung}
+\end{small}
+\renewcommand*{\labelenumi}{\theenumi.}
+\end{minipage}
+}
+\newcommand*{\Quelle}[3]{\item #1{}: \href{#2}{#3}}
+\usepackage{listings}
+\lstdefinestyle{StyleListingBasic}{%
+basicstyle=\ttfamily,
+frame=single,
+framesep=1pt,
+framerule=0.8pt,
+rulecolor=\color{dunkelgrau},
+breaklines=true,
+breakindent=0pt
+}
+\newcommand*{\term}[1]{%
+\lstinline[style=StyleListingBasic,%
+basicstyle=\ttfamily\bfseries]|#1|%
+}
+\definecolor{mittelgrau}{gray}{0.85}
+\lstdefinestyle{StyleCommand}{%
+style=StyleListingBasic,
+backgroundcolor=\color{mittelgrau},
+prebreak=\mbox{\textbackslash{}}
+}
+\lstnewenvironment{Befehl}[1][1]
+{\lstset{style=StyleCommand,linewidth=#1\linewidth}}
+{}
+\definecolor{hellgelb}{rgb}{1.0,1.0,0.9}
+\lstdefinestyle{StyleListing}{%
+style=StyleListingBasic,
+backgroundcolor=\color{hellgelb}
+}
+\lstnewenvironment{Listing}[1][1]
+{\lstset{style=StyleListing,linewidth=#1\linewidth}}
+{}
+\definecolor{hellgrau}{gray}{0.93}
+\newcommand{\Autoreninfo}[3][1.0]{%
+\setlength{\fboxsep}{0pt}%
+\vskip1em{}%
+\noindent\colbox{hellgrau}{black}{%
+\parbox{#1\linewidth-2\fboxsep}{%
+\setlength{\fboxsep}{4pt}%
+\colbox{dunkelgrau}{white}{%
+\parbox{\linewidth-2\fboxsep}{{\Large #2}}%
+}\\[0.3em]%
+\colbox{hellgrau}{black}{%
+\parbox{\linewidth-2\fboxsep}{#3}%
+}\\[0.3em]%
+}%
+}%
+}
+\usepackage[text={182mm,261mm}]{geometry}
+\usepackage{multicol}
+\setlength{\columnsep}{0.5cm}
+\usepackage{setspace}
+\newcommand{\Autor}[1]
+{%
+\begin{spacing}{1.2}%
+\begin{description}%
+\item[\textbf{Por:}] #1%
+\end{description}%
+\end{spacing}%
+}
+\newcommand{\Einleitung}[1]
+{%
+\begin{spacing}{2}%
+\begin{flushleft}%
+{\huge #1}%
+\end{flushleft}%
+\end{spacing}%
+\vfill{}%
+\columnbreak{}%
+}
+\newenvironment{Artikel}[4]
+{%
+\pdfbookmark[2]{#2}{#1}
+\setcounter{linkcounter}{1}
+\begin{multicols}{3}[\section*{#2}]
+\begin{spacing}{1.05}
+\Autor{#3}
+\vskip-3em{}%
+\Einleitung{#4}
+}
+{%
+\end{spacing}
+\end{multicols}
+\clearpage
+}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhead{}
+\fancyhead[LE]{Kategorie}
+\fancyfoot{}
+\fancyfoot[LE,RO]{\textbf{\textsc{\thepage}}}
+\fancyfoot[RE,LO]{\textsl{SuperMAG XX/2009}}
+\renewcommand*{\headrulewidth}{0.0pt}
+\renewcommand*{\footrulewidth}{0.0pt}
+\newcommand{\SetFusszeile}[1]{%
+\fancyfoot[RE,LO]{\textsl{Llave de Sol, #1}}
+\hypersetup{pdftitle={Llave de Sol, #1}}
+}
+\usepackage[absolute]{textpos}
+\usepackage{rotating}
+\fancyhead[LE]{\PrintHeader{Kategorie}}
+\newcommand{\PrintHeader}[1]{%
+  \begin{textblock}{1}(0,0)%
+    \begin{sideways}%
+      \setlength{\fboxsep}{3pt}
+      \colbox{\maincolor}{\maintextcolor}{%
+        {\large \textsl{\textbf{#1}}}%
+      }%
+      \hspace*{1.5cm}%
+    \end{sideways}%
+  \end{textblock}%
+}
+\newcommand*{\SetKategorie}[3]{%
+\fancyhead{}%
+\fancyhead[LE]{\PrintHeader{#1}}%
+\pdfbookmark[1]{#1}{#1}%
+\SetMainColor{#2}%
+\SetMainTextColor{#3}%
+}
+\newcommand{\fcolbox}[4]{%
+\fcolorbox{#1}{#2}{\textcolor{#3}{#4}}%
+}
+\newcommand{\Bildunterschrift}[3]
+{%
+\setlength{\fboxsep}{5pt}%
+\setlength{\fboxrule}{0.8pt}%
+\noindent{}%
+\fcolbox{black}{dunkelgrau}{white}{%
+\parbox{#1-2\fboxsep-2\fboxrule}{%
+\begin{flushleft}%
+\vskip-5pt{}%
+\textbf{\MakeUppercase{#2}} | #3%
+\end{flushleft}%
+\vskip-5pt{}%
+}%
+}%
+}
+\usepackage{graphicx}
+\newcommand{\BildInternal}[4][\linewidth]
+{%
+\includegraphics[width=#1]{Pictures/#2}\\[-2px]
+\Bildunterschrift{#1}{#3}{#4}\\
+}
+\newcommand{\Bild}[4][\linewidth]
+{%
+\noindent{}%
+\parbox{#1}{\BildInternal[#1]{#2}{#3}{#4}}%
+}
+\newlength{\VSkipHeight}
+\newcommand{\BildAbs}[3]
+{%
+\begin{textblock}{1}(0,0)%
+\Bild[\paperwidth]{#1}{#2}{#3}%
+\end{textblock}%
+\settoheight{\VSkipHeight}{%
+\BildInternal[\paperwidth]{#1}{#2}{#3}%
+}%
+\addtolength{\VSkipHeight}{-3em}%
+\vspace*{\VSkipHeight}%
+}
+\newcommand{\sbreak}[1][-1em]{\linebreak[4]\\[#1]}
+\newcommand{\cbreakfill}{\vfill\columnbreak}
+\newcommand{\csbreakfill}{\sbreak\cbreakfill\noindent}
+\usepackage{wrapfig}
+\newcommand{\Einschub}[3]
+{%
+\begin{wrapfigure}[#1]{#2}{#3}
+\vfill
+\end{wrapfigure}
+}
+\usepackage{array,color}
+\usepackage{colortbl} 
