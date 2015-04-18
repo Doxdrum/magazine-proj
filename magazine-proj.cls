@@ -6,15 +6,15 @@
 %% %%%%%%%%%% Identification
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{magazine-proj}[2015/04/17 v0.1 LaTeX package for magazines]
-\DeclareOption{letterpaper}{\PassOptionsToClass{letterpaper}{scrartcl}}
-\DeclareOption{10pt}{\PassOptionsToClass{10pt}{scrartcl}}
-\DeclareOption{twoside}{\PassOptionsToClass{twoside}{scrartcl}}
+\DeclareOption{letterpaper}{\PassOptionsToClass{letterpaper}{article}}
+\DeclareOption{10pt}{\PassOptionsToClass{10pt}{article}}
+\DeclareOption{twoside}{\PassOptionsToClass{twoside}{article}}
 \DeclareOption*{%
   \ClassWarning{magazine-proj}{Unknown option `\CurrentOption' ignored}%
 }
 \ExecuteOptions{10pt,twoside}
 \ProcessOptions\relax
-\LoadClass[letterpaper]{scrartcl}
+\LoadClass[letterpaper]{article}
 \RequirePackage{xparse}
 \RequirePackage[utf8]{inputenc}
 \RequirePackage[T1]{fontenc}   
@@ -79,6 +79,12 @@
 }
 
 
+\definecolor{dunkelgrau}{gray}{0.25}
+\definecolor{mittelgrau}{gray}{0.85}
+\definecolor{hellgrau}{gray}{0.93}
+\definecolor{mittelblau}{rgb}{0.27,0.5,1.0}
+\definecolor{hellgelb}{rgb}{1.0,1.0,0.9}
+\definecolor{url}{rgb}{0,0,0}
 \lstdefinestyle{StyleListingBasic}{%
   basicstyle=\ttfamily,
   frame=single,
