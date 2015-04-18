@@ -19,12 +19,11 @@
 \newcommand{\Initial}[1]{%
 \setcounter{DefaultLines}{3}%
 \renewcommand*{\DefaultLoversize}{-0.2}%
-\setlength{\fboxsep}{0.4em}%
-\lettrine[nindent=-0.1mm,findent=0.7em,lraise=0.3]{%
+%% \setlength{\fboxsep}{0.4em}%
+\lettrine[nindent=-0.1mm,findent=0.7ex,lraise=0.3]{%
 \colbox{\maincolor}{\maintextcolor}{%
 \begin{minipage}{0.9em}%
-\centering{}%
-#1 %
+\centering{#1} %
 \end{minipage}%
 }%
 }{}%
@@ -72,32 +71,30 @@ basicstyle=\ttfamily\bfseries]|#1|%
 {\lstset{style=StyleListing,linewidth=#1\linewidth}}
 {}
 \newcommand{\Autoreninfo}[3][1.0]{%
-\setlength{\fboxsep}{0pt}%
-\vskip1em{}%
-\noindent\colbox{hellgrau}{black}{%
-\parbox{#1\linewidth-2\fboxsep}{%
-\setlength{\fboxsep}{4pt}%
-\colbox{dunkelgrau}{white}{%
-\parbox{\linewidth-2\fboxsep}{{\Large #2}}%
-}\\[0.3em]%
-\colbox{hellgrau}{black}{%
-\parbox{\linewidth-2\fboxsep}{#3}%
-}\\[0.3em]%
-}%
-}%
+  \setlength{\fboxsep}{0pt}%
+  \vskip1em{}%
+  \noindent\colbox{hellgrau}{black}{%
+    \parbox{#1\linewidth-2\fboxsep}{%
+      \setlength{\fboxsep}{4pt}%
+      \colbox{dunkelgrau}{white}{%
+        \parbox{\linewidth-2\fboxsep}{{\Large #2}}%
+      }\\[0.3em]%
+      \colbox{hellgrau}{black}{%
+        \parbox{\linewidth-2\fboxsep}{#3}%
+      }\\[0.3em]%
+    }%
+  }%
 }
 \pagestyle{fancy}
 \fancyhead{}
-\fancyhead[LE]{Kategorie}
 \fancyfoot{}
-\fancyfoot[LE,RO]{\textbf{\textsc{\thepage}}}
-\fancyfoot[RE,LO]{\textsl{SuperMAG XX/2009}}
+\fancyhead[LE]{Kategorie}
+\fancyfoot[LE,RO]{\textbf{\thepage}}
+%% \fancyfoot[RE,LO]{\textsl{SuperMAG XX/2009}}
 \renewcommand*{\headrulewidth}{0.0pt}
 \renewcommand*{\footrulewidth}{0.0pt}
 \newcommand{\SetFusszeile}[1]{%
-\fancyfoot[RE,LO]{\textsl{Llave de Sol, #1}}
-\hypersetup{pdftitle={Llave de Sol, #1}}
-}
+\fancyfoot[RE,LO]{\textsc{\magazinename, \magazinedate}}}
 \fancyhead[LE]{\PrintHeader{Kategorie}}
 \newcommand{\PrintHeader}[1]{%
   \begin{textblock}{1}(0,0)%
@@ -153,7 +150,7 @@ basicstyle=\ttfamily\bfseries]|#1|%
 \settoheight{\VSkipHeight}{%
 \BildInternal[\paperwidth]{#1}{#2}{#3}%
 }%
-\addtolength{\VSkipHeight}{-3em}%
+%%\addtolength{\VSkipHeight}{-3em}%
 \vspace*{\VSkipHeight}%
 }
 \newcommand{\sbreak}[1][-1em]{\linebreak[4]\\[#1]}

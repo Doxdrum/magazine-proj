@@ -31,7 +31,7 @@
 \RequirePackage{dsfont}
 \RequirePackage{enumitem}
 \RequirePackage{listings}
-\RequirePackage[textwidth=182mm,textheight=261mm,hmarginratio=1:1,vmarginratio=1:1]{geometry}
+\RequirePackage[textwidth=182mm,textheight=252mm,hmarginratio=1:1,vmarginratio=1:1]{geometry}
 \RequirePackage{multicol}
 \RequirePackage{setspace}
 \RequirePackage{fancyhdr}
@@ -43,17 +43,20 @@
 \RequirePackage{array}
 \AtBeginDocument{
   \RequirePackage[linktocpage,colorlinks=true,urlcolor=blue,linkcolor=blue,citecolor=red]{hyperref}
-  %% \@ifpackage{babel}{spanish} {%
-  %%   \addto\captionsspanish{%
-  %%     \renewcommand*\authoredby{Por}
-  %%   }
-  %% }{}
+  \hypersetup{pdftitle={\magazinename, \magazinedate}}
+  \@ifpackagewith{babel}{spanish}{%
+    \addto\captionsspanish{%
+      \renewcommand*\authoredby{Por}
+    }
+  }{}
 }
 \setlength{\columnsep}{0.5cm}
 \DeclareRobustCommand\authoredby{By}
+\DeclareRobustCommand\magazinename{Magazine~Project}
+\DeclareRobustCommand\magazinedate{04/2015}
 \NewDocumentCommand\autarticle{ m }{%
   \begin{flushleft}
-    \textbf{Por:}~#1
+    \textbf{\authoredby:}~#1
   \end{flushleft}
 }
 \NewDocumentCommand\lead{ m }{
