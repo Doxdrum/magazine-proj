@@ -2,35 +2,34 @@
 \renewcommand*{\ttdefault}{txtt}
 \newcommand*{\Menu}[1]{\textit{"‘#1"’}}
 \newcommand*{\Paket}[1]{\textbf{\mbox{#1}}}
-\titleformat{\section}{\normalfont\Huge}{}{0mm}{}
-\titleformat{\subsection}%
-            {\normalfont\large\bfseries\scshape}{}{0mm}{}
+%% \titleformat{\section}{\normalfont\Huge}{}{0mm}{}
+%% \titleformat{\subsection}%
+%%             {\normalfont\large\bfseries\scshape}{}{0mm}{}
 %% \newcommand{\colbox}[3]{\colorbox{#1}{\textcolor{#2}{#3}}}
 %% \newcommand*{\maincolor}{mittelblau}
 %% \newcommand*{\maintextcolor}{white}
 %% \newcommand*{\SetMainColor}[1]{\renewcommand*{\maincolor}{#1}}
 %% \newcommand*{\SetMainTextColor}[1]{\renewcommand*{\maintextcolor}{#1}}
-\newcommand{\Abschnitt}[1]{%
-\setlength{\fboxsep}{0.2em}%
-\subsection*{\colbox{\maincolor}{\maintextcolor}%
-{\parbox{\linewidth-2\fboxsep-2\fboxrule}{#1}}}%
-\noindent{}%
-}
-\newcommand{\Initial}[1]{%
-\setcounter{DefaultLines}{3}%
-\renewcommand*{\DefaultLoversize}{-0.2}%
-%% \setlength{\fboxsep}{0.4em}%
-\lettrine[nindent=-0.1mm,findent=0.7ex,lraise=0.3]{%
-\colbox{\maincolor}{\maintextcolor}{%
-\begin{minipage}{0.9em}%
-\centering{#1} %
-\end{minipage}%
-}%
-}{}%
-}
-\renewcommand*{\labelitemi}{%
-\textcolor{\maincolor}{\footnotesize$\blacksquare$}%
-}
+%% \newcommand{\Abschnitt}[1]{%
+%% \setlength{\fboxsep}{0.2em}%
+%% \subsection*{\colbox{\maincolor}{\maintextcolor}%
+%% {\parbox{\linewidth-2\fboxsep-2\fboxrule}{#1}}}%
+%% \noindent{}%
+%% }
+%% \newcommand{\Initial}[1]{%
+%% \setcounter{DefaultLines}{3}%
+%% %%\renewcommand*{\DefaultLoversize}{-0.2}
+%% \lettrine[nindent=-0.1mm,findent=0.7ex,lraise=0.3]{%
+%% \colbox{\maincolor}{\maintextcolor}{%
+%% \begin{minipage}{0.9em}%
+%% \centering{#1} %
+%% \end{minipage}%
+%% }%
+%% }{}%
+%% }
+%% \renewcommand*{\labelitemi}{%
+%% \textcolor{\maincolor}{\footnotesize$\blacksquare$}%
+%% }
 \newenvironment{Auflistung}
 {\begin{itemize}[itemsep=0.0em,leftmargin=*]}
 {\end{itemize}}

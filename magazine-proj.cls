@@ -52,6 +52,7 @@
   }{}
 }
 \setlength{\columnsep}{0.5cm}
+\setcounter{DefaultLines}{3}
 \DeclareRobustCommand\authoredby{By}
 \DeclareRobustCommand\magazinename{Magazine~Project}
 \DeclareRobustCommand\magazinedate{04/2015}
@@ -81,6 +82,10 @@
   \end{multicols}
   \clearpage
 }
+\RenewDocumentCommand\labelitemi{
+  \textcolor{\maincolor}{\footnotesize$\blacksquare$}%
+}
+
 
 \definecolor{dunkelgrau}{gray}{0.25}
 \definecolor{mittelgrau}{gray}{0.85}
@@ -88,6 +93,9 @@
 \definecolor{mittelblau}{rgb}{0.27,0.5,1.0}
 \definecolor{hellgelb}{rgb}{1.0,1.0,0.9}
 \definecolor{url}{rgb}{0,0,0}
+\titleformat{\section}{\normalfont\Huge}{}{0mm}{}
+\titleformat{\subsection}%
+            {\normalfont\large\bfseries\scshape}{}{0mm}{}
 \lstdefinestyle{StyleListingBasic}{%
   basicstyle=\ttfamily,
   frame=single,
@@ -115,4 +123,13 @@
 \setlength{\fboxsep}{0.2em}
 \DeclareDocumentCommand\subsection{ m }{
   \oldsubsection*{\colbox{\maincolor}{\maintextcolor}{\parbox{\linewidth-2\fboxsep-2\fboxrule}{#1}}}\noindent{}%
+}
+\NewDocumentCommand\Initial{ m }{
+  \lettrine[nindent=-0.1mm,findent=0.7ex,lraise=0.3,loversize=-.05]{%
+    \colbox{\maincolor}{\maintextcolor}{%
+      \begin{minipage}{0.9em}%
+        \centering{#1} %
+      \end{minipage}%
+    }%
+  }{}%
 }
