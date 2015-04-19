@@ -20,7 +20,7 @@
 \RequirePackage[T1]{fontenc}   
 \RequirePackage[scaled]{helvet}
 \RequirePackage{xcolor}
-\RequirePackage{titlesec}
+\RequirePackage[compact]{titlesec}
 \RequirePackage{calc}
 \RequirePackage{lettrine}
 \RequirePackage{amsmath}
@@ -41,6 +41,7 @@
 \RequirePackage{wrapfig}
 \RequirePackage{colortbl}
 \RequirePackage{array}
+\RequirePackage[subsectionbib]{bibunits}
 \AtBeginDocument{
   \RequirePackage[linktocpage,colorlinks=true,urlcolor=blue,linkcolor=blue,citecolor=red]{hyperref}
   \hypersetup{pdftitle={\magazinename, \magazinedate}}
