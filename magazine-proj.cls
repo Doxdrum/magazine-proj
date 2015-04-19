@@ -82,7 +82,6 @@
   \clearpage
 }
 
-
 \definecolor{dunkelgrau}{gray}{0.25}
 \definecolor{mittelgrau}{gray}{0.85}
 \definecolor{hellgrau}{gray}{0.93}
@@ -106,4 +105,14 @@
 \lstdefinestyle{StyleListing}{%
   style=StyleListingBasic,
   backgroundcolor=\color{hellgelb}
+}
+\NewDocumentCommand\colbox{ m m m }{\colorbox{#1}{\textcolor{#2}{#3}}}
+\NewDocumentCommand\maincolor{ O{mittelblau} }{ #1 }
+\NewDocumentCommand\maintextcolor{ O{white} }{ #1 }
+\NewDocumentCommand\SetMainColor{ m }{\renewcommand*{\maincolor}{#1}}
+\NewDocumentCommand\SetMainTextColor{ m }{\renewcommand*{\maintextcolor}{#1}}
+\let\oldsubsection=\subsection
+\setlength{\fboxsep}{0.2em}
+\DeclareDocumentCommand\subsection{ m }{
+  \oldsubsection*{\colbox{\maincolor}{\maintextcolor}{\parbox{\linewidth-2\fboxsep-2\fboxrule}{#1}}}\noindent{}%
 }
