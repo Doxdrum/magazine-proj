@@ -82,9 +82,9 @@
   \end{multicols}
   \clearpage
 }
-\RenewDocumentCommand\labelitemi{
-  \textcolor{\maincolor}{\footnotesize$\blacksquare$}%
-}
+%% \RenewDocumentCommand\labelitemi{
+%%   \textcolor{\maincolor}{\footnotesize$\blacksquare$}%
+%% }
 
 
 \definecolor{dunkelgrau}{gray}{0.25}
@@ -120,6 +120,8 @@
 \NewDocumentCommand\SetMainColor{ m }{\renewcommand*{\maincolor}{#1}}
 \NewDocumentCommand\SetMainTextColor{ m }{\renewcommand*{\maintextcolor}{#1}}
 \let\oldsubsection=\subsection
+%% \let\olditemize=\itemize
+%% \let\oldenditemize=\enditemize
 \setlength{\fboxsep}{0.2em}
 \DeclareDocumentCommand\subsection{ m }{
   \oldsubsection*{\colbox{\maincolor}{\maintextcolor}{\parbox{\linewidth-2\fboxsep-2\fboxrule}{#1}}}\noindent{}%
@@ -133,3 +135,7 @@
     }%
   }{}%
 }
+\setlist[itemize]{itemsep=0.0em,leftmargin=*,label=\textcolor{\maincolor}{\footnotesize$\blacksquare$}}
+\setlist[enumerate]{itemsep=0.0em,leftmargin=*}
+\newlist{bibenum}{enumerate}{3}
+\setlist[bibenum]{label=[\arabic*]}%% ,resume,leftmargin={\bibhang+\widthof{[999]}},itemindent=-\bibhang,itemsep=\bibsep,parsep=0pt,partopsep=0pt,topsep=0pt}

@@ -30,33 +30,31 @@
 %% \renewcommand*{\labelitemi}{%
 %% \textcolor{\maincolor}{\footnotesize$\blacksquare$}%
 %% }
-\newenvironment{Auflistung}
-{\begin{itemize}[itemsep=0.0em,leftmargin=*]}
-{\end{itemize}}
-\newenvironment{Aufzaehlung}{\begin{enumerate}[itemsep=0.0em,leftmargin=*]}{\end{enumerate}}
+%% \newenvironment{Auflistung}
+%% {\begin{itemize}[itemsep=0.0em,leftmargin=*]}
+%% {\end{itemize}}
+%% \newenvironment{Aufzaehlung}{\begin{enumerate}[itemsep=0.0em,leftmargin=*]}{\end{enumerate}}
 \newcounter{linkcounter}
 \newcommand*{\Link}[2]%
 [\arabic{linkcounter}\stepcounter{linkcounter}]%
 {~\href{#2}{[#1]}}
-\newenvironment{Quellen}[1][\linewidth]
-{%
-\noindent{}%
-\begin{minipage}{#1}
-\hfill{}%
-\begin{tabular}{r}
-\textcolor{dunkelgrau}%
-{\normalfont\large\scshape Material de apoyo}\\[-1.9ex]
-\textcolor{\maincolor}{\rule{3.7cm}{1.5pt}}\\[-0.8ex]
-\end{tabular}
-\renewcommand*{\labelenumi}{[\theenumi]}
-\begin{small}
-\begin{Aufzaehlung}
-}
-{%
-\end{Aufzaehlung}
-\end{small}
-\renewcommand*{\labelenumi}{\theenumi.}
-\end{minipage}
+\newenvironment{Quellen}[1][\linewidth]{%
+  \noindent{}%
+  \begin{minipage}{#1}
+    \hfill{}%
+    \begin{tabular}{r}
+      \textcolor{dunkelgrau}%
+                {\normalfont\large\scshape Material de apoyo}\\[-1.9ex]
+                \textcolor{\maincolor}{\rule{3.7cm}{1.5pt}}\\[-0.8ex]
+    \end{tabular}
+    %% \renewcommand*{\labelenumi}{[\theenumi]}
+    \begin{small}
+      \begin{bibenum}%%[label=[\theenumi]]
+}{%
+      \end{bibenum}
+    \end{small}
+    %% \renewcommand*{\labelenumi}{\theenumi.}
+  \end{minipage}
 }
 \newcommand*{\Quelle}[3]{\item #1{}: \href{#2}{#3}}
 \newcommand*{\term}[1]{%
@@ -107,10 +105,10 @@ basicstyle=\ttfamily\bfseries]|#1|%
   \end{textblock}%
 }
 \newcommand*{\SetKategorie}[3]{%
-\fancyhead{}%
-\fancyhead[LE]{\PrintHeader{#1}}%
-\SetMainColor{#2}%
-\SetMainTextColor{#3}%
+  \fancyhead{}%
+  \fancyhead[LE]{\PrintHeader{#1}}%
+  \SetMainColor{#2}%
+  \SetMainTextColor{#3}%
 }
 \newcommand{\fcolbox}[4]{%
 \fcolorbox{#1}{#2}{\textcolor{#3}{#4}}%
