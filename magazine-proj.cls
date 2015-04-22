@@ -72,21 +72,18 @@
 }
 \NewDocumentEnvironment{article}{ O{3} m m m m }{%
   \pdfbookmark{#3}{#2}
-  \begin{multicols}{#1}[\section*{#3}]
-    \begin{spacing}{1.05}
-      \autarticle{#4}
-      \vskip-3em{}%
-      \lead{#5}
+  \begin{bibunit}[utphys]
+    \begin{multicols}{#1}[\section*{#3}]
+      \begin{spacing}{1.05}
+        \autarticle{#4}
+        \vskip-3em{}%
+        \lead{#5}
 }{%
-  \end{spacing}
-  \end{multicols}
+      \end{spacing}
+    \end{multicols}
+  \end{bibunit}
   \clearpage
 }
-%% \RenewDocumentCommand\labelitemi{
-%%   \textcolor{\maincolor}{\footnotesize$\blacksquare$}%
-%% }
-
-
 \definecolor{dunkelgrau}{gray}{0.25}
 \definecolor{mittelgrau}{gray}{0.85}
 \definecolor{hellgrau}{gray}{0.93}
@@ -94,8 +91,7 @@
 \definecolor{hellgelb}{rgb}{1.0,1.0,0.9}
 \definecolor{url}{rgb}{0,0,0}
 \titleformat{\section}{\normalfont\Huge}{}{0mm}{}
-\titleformat{\subsection}%
-            {\normalfont\large\bfseries\scshape}{}{0mm}{}
+\titleformat{\subsection}{\normalfont\large\bfseries\scshape}{}{0mm}{}
 \lstdefinestyle{StyleListingBasic}{%
   basicstyle=\ttfamily,
   frame=single,
@@ -120,11 +116,9 @@
 \NewDocumentCommand\SetMainColor{ m }{\renewcommand*{\maincolor}{#1}}
 \NewDocumentCommand\SetMainTextColor{ m }{\renewcommand*{\maintextcolor}{#1}}
 \let\oldsubsection=\subsection
-%% \let\olditemize=\itemize
-%% \let\oldenditemize=\enditemize
 \setlength{\fboxsep}{0.2em}
-\DeclareDocumentCommand\subsection{ m }{
-  \oldsubsection*{\colbox{\maincolor}{\maintextcolor}{\parbox{\linewidth-2\fboxsep-2\fboxrule}{#1}}}\noindent{}%
+\DeclareDocumentCommand\subsection{ s m }{
+  \oldsubsection*{\colbox{\maincolor}{\maintextcolor}{\parbox{\linewidth-2\fboxsep-2\fboxrule}{#2}}}\noindent{}%
 }
 \NewDocumentCommand\Initial{ m }{
   \lettrine[nindent=-0.1mm,findent=0.7ex,lraise=0.3,loversize=-.05]{%
@@ -137,5 +131,7 @@
 }
 \setlist[itemize]{itemsep=0.0em,leftmargin=*,label=\textcolor{\maincolor}{\footnotesize$\blacksquare$}}
 \setlist[enumerate]{itemsep=0.0em,leftmargin=*}
+%% TO BE DEPRECATED AFTER CONFIGURING
+%% BIBUNITS CORRECTLY
 \newlist{bibenum}{enumerate}{3}
-\setlist[bibenum]{label=[\arabic*]}%% ,resume,leftmargin={\bibhang+\widthof{[999]}},itemindent=-\bibhang,itemsep=\bibsep,parsep=0pt,partopsep=0pt,topsep=0pt}
+\setlist[bibenum]{label=[\arabic*]}
