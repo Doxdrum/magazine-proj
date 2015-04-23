@@ -41,6 +41,7 @@
 \RequirePackage{wrapfig}
 \RequirePackage{colortbl}
 \RequirePackage{array}
+\RequirePackage{etoolbox}
 \RequirePackage[subsectionbib]{bibunits}
 \AtBeginDocument{
   \RequirePackage[linktocpage,colorlinks=true,urlcolor=blue,linkcolor=blue,citecolor=red]{hyperref}
@@ -53,6 +54,7 @@
 }
 \setlength{\columnsep}{0.5cm}
 \setcounter{DefaultLines}{3}
+%%\ExplSyntaxOn
 \DeclareRobustCommand\authoredby{By}
 \DeclareRobustCommand\magazinename{Magazine~Project}
 \DeclareRobustCommand\magazinedate{04/2015}
@@ -61,29 +63,34 @@
     \textbf{\authoredby:}~#1
   \end{flushleft}
 }
-\NewDocumentCommand\lead{ m }{
-  \begin{spacing}{2}
-    \begin{flushleft}
-      {\huge #1}
-    \end{flushleft}
-  \end{spacing}
-  \vfill{}
-  \columnbreak{}
+\NewDocumentCommand\lead{ o }{
+  \IfValueT{#1}{
+    \DeclareRobustCommand\blindlead{
+      \begin{spacing}{2}
+        \begin{flushleft}
+          {\huge #1}
+        \end{flushleft}
+      \end{spacing}
+      \vfill{}
+      \columnbreak{}
+    }
+  }
 }
-\NewDocumentEnvironment{article}{ O{3} m m m m }{%
+\NewDocumentEnvironment{article}{ O{3} m m m }{%
   \pdfbookmark{#3}{#2}
   \begin{bibunit}[utphys]
     \begin{multicols}{#1}[\section*{#3}]
       \begin{spacing}{1.05}
         \autarticle{#4}
         \vskip-3em{}%
-        \lead{#5}
+        \ifdef{\blindlead}{\blindlead}{}
 }{%
       \end{spacing}
     \end{multicols}
   \end{bibunit}
   \clearpage
 }
+%% \ExplSyntaxOff
 \definecolor{dunkelgrau}{gray}{0.25}
 \definecolor{mittelgrau}{gray}{0.85}
 \definecolor{hellgrau}{gray}{0.93}
