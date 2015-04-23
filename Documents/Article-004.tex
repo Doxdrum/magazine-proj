@@ -48,14 +48,13 @@
   \end{lstlisting}
 
   Before continue the presentation, it is recommended to give it structure in sections and subsections, using the usual
-
   \begin{lstlisting}[style=LaTeX]
     \section{...}
 
     \subsection{...}
   \end{lstlisting}
-
   and then one may fill the structure of the document with frames.
+
   \subsection{Compiling the PDF}
 
   Now save your file (with extension .tex), say  beamer.tex, and in your terminal type
@@ -75,11 +74,10 @@
   As you have notice, the PDF file you have got is quit plain, so the next step is to give a nice format.
 
   There are a lot of different themes for your presentation, in order to use them, use the command (in the preamble)
-
-  %% \usetheme{...}
-
+  \begin{lstlisting}[style=LaTeX]
+    \usetheme{...}
+  \end{lstlisting}
   and here is a list of some themes,
-
   \begin{itemize}
   \item AnnArbor
   \item Berkeley
@@ -95,11 +93,10 @@
   \end{itemize}
 
   If you like the theme structure but not the choice of colours, the command (again in the preamble)
-
-  %% \usecolortheme{...}
-
+  \begin{lstlisting}[style=LaTeX]
+    \usecolortheme{...}
+  \end{lstlisting}
   and here is a list of colours,
-
   \begin{itemize}
   \item beetle
   \item crane
@@ -117,85 +114,69 @@
   \subsection{Background Picture}
 
   If you like to add a background picture as a global setting, add the following command line in the preamble
-
-  %% \usebackgroundtemplate{\includegraphics[width=\paperwidth,
-  %%     height=\paperheight]{file.jpg}}
-
+  \begin{lstlisting}[style=LaTeX]
+    \usebackgroundtemplate{\includegraphics[width=\paperwidth,
+        height=\paperheight]{file.jpg}}
+  \end{lstlisting}
   where file.jpg is the name of the picture you’d like to use.
 
-  In instead you prefer to insert the background picture in a single frame, surround the frame with braces and insert the above command line as shown below,
+  If instead you prefer to insert the background picture in a single frame, surround the frame with braces and insert the above command line as shown below,
+  \begin{lstlisting}[style=LaTeX]
+    {
+      \usebackgroundtemplate{\includegraphics[width=\paperwidth,
+          height=\paperheight]{file.jpg}}
+      \begin{frame}
 
-  %% {
-
-  %%   \usebackgroundtemplate{\includegraphics[width=\paperwidth,
-  %%       height=\paperheight]{file.jpg}}
-
-  %%   \begin{frame}
-
-  %%   \end{frame}
-
-  %% }
+      \end{frame}
+    }
+  \end{lstlisting}
 
   \subsection{Adding Columns}
 
   If you want to split a frame in two columns (say to insert text in the left one and a picture in the right one), in the frame include the following command,
-
-  %% \begin{columns}
-
-  %%   \column{.5\textwidth}
-
-  %%   ...content of left column...
-
-  %%   \column{.5\textwidth}
-
-  %%   ... content of right column...
-
-  %% \end{columns}
+  \begin{lstlisting}[style=LaTeX]
+    \begin{columns}
+      \column{.5\textwidth}
+      ...content of left column...
+      \column{.5\textwidth}
+      ... content of right column...
+    \end{columns}
+  \end{lstlisting}
 
   \subsection{Sliding a Frame}
 
-  A frame may be divided into several slides by using the command
+  A frame may be divided into several slides by using the command \lstinline[style=LaTeX]!\pause!, so the compiler generate more than one slide (page of PDF file) for the same frame, each slide shows from the beginning to the corresponding pause.
 
-  %% \pause
-
-  so the compiler generate more than one slide (page of PDF file) for the same frame, each slide shows from the beginning to the corresponding pause.
-
-  When using the itemize environment, one might play with the order items are shown using the command
-
-%% \item<m->
-
-%% \item<-n>
-
-%% \item<m-n>
-
+  When using the itemize environment, one might play with the order items are shown using the commands
+  \begin{lstlisting}[style=LaTeX]
+  \item<m->
+  \item<-n>
+  \item<m-n>
+  \end{lstlisting}
   if you want the item to appear from the m-th slide, until the n-th slide or from the m-th to the n-th slide.
 
   \subsection{Using Blocks}
 
   If one would like to remark some information, there are different blocks structures pre-determined in the beamer class.
 
-  %% \begin{block}{...block title...}
-
-  %%   ...content of the block...
-
-  %% \end{block}
-
-  %% generates a blue-stylish  block of information with custom title.
-
-  %% \begin{alertblock}{...block title...}
-
-  %%   ...content of the block...
-
-  %% \end{alertblock}
-
+  For example,
+  \begin{lstlisting}[style=LaTeX]
+    \begin{block}{...block title...}
+      ...content of the block...
+    \end{block}
+  \end{lstlisting}
+  generates a blue-stylish  block of information with custom title.
+  \begin{lstlisting}[style=LaTeX]
+    \begin{alertblock}{...block title...}
+      ...content of the block...
+    \end{alertblock}
+  \end{lstlisting}
   generates a red-stylish block of information with custom title.
-
-  %% \begin{example}[...block subtitle...]
-
-  %%   ...content of the block...
-
-  %% \end{example}
-
+  \begin{lstlisting}[style=LaTeX]
+    \begin{example}[...block subtitle...]
+      ...content of the block...
+    \end{example}
+  \end{lstlisting}
   generates a green-stylish block of information withtitle `Example’ and custom subtitle.
 
   Additional to these, there are theorem and proof block-environments.

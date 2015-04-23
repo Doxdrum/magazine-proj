@@ -64,7 +64,7 @@
   \end{flushleft}
 }
 \NewDocumentCommand\lead{ o }{
-  \IfValueT{#1}{
+  \IfValueTF{#1}{
     \DeclareRobustCommand\blindlead{
       \begin{spacing}{2}
         \begin{flushleft}
@@ -74,7 +74,7 @@
       \vfill{}
       \columnbreak{}
     }
-  }
+  }{}
 }
 \NewDocumentEnvironment{article}{ O{3} m m m }{%
   \pdfbookmark{#3}{#2}
@@ -88,6 +88,7 @@
       \end{spacing}
     \end{multicols}
   \end{bibunit}
+  \let\blindlead=\relax
   \clearpage
 }
 %% \ExplSyntaxOff
