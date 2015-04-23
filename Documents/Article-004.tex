@@ -5,57 +5,70 @@
   %% Really Basics
 
   \Initial{I}n order to do a Beamer presentation, one begins as with any LaTeX document, giving a class and beginning and ending the document
+  \begin{lstlisting}[style=LaTeX]
+    \documentclass{beamer}
 
-  %% \documentclass{beamer}
+    \begin{document}
 
-  %% \begin{document}
+    \end{document}
+  \end{lstlisting}
 
-  %% \end{document}
+  In the preamble (between the class and begin-document) define the following
+  \begin{lstlisting}[style=LaTeX]
+    \title{...}
 
-  In the preamble (between the class and begin-document) give
+    \subtitle{...}
 
-  %% \title{...}
+    \author{...}
 
-  %% \subtitle{...}
+    \institute{...}
 
-  %% \author{...}
+    \date{...}
+  \end{lstlisting}
 
-  %% \institute{...}
+  Now, in the body of the document (between begin-document and end-document)  one may begin to do frames. A frame might contain many slides, but it carries the structure.
+  \begin{lstlisting}[style=LaTeX]
+    \begin{frame}
 
-  %% \date{...}
+    \end{frame}
+  \end{lstlisting}
 
-  Now, in the body of the document (between begin-document and end-document)  one may begin to do frames . A frame might contain many slides, but it carries the structure.
-
-  %% \begin{frame}
-
-  %% \end{frame}
-
-  Usually the first frame is the titlepage, so it is done by inserting,
-
-  %% \titlepage
-
+  Usually the first frame is the titlepage, so it is done by inserting the command \lstinline[style=LaTeX]!\titlepage!, getting
+  \begin{lstlisting}[style=LaTeX]
+    \begin{frame}
+      \titlepage
+    \end{frame}
+  \end{lstlisting}
   and the second frame is the outline, so in the second frame one usually adds a frametitle and the content,
-
-  %% \frametitle{Outline}
-
-  %% \tableofcontents
+  \begin{lstlisting}[style=LaTeX]
+    \begin{frame}
+      \frametitle{Outline}
+      \tableofcontents
+    \end{frame}
+  \end{lstlisting}
 
   Before continue the presentation, it is recommended to give it structure in sections and subsections, using the usual
 
-  %% \section{...}
+  \begin{lstlisting}[style=LaTeX]
+    \section{...}
 
-  %% \subsection{...}
+    \subsection{...}
+  \end{lstlisting}
 
   and then one may fill the structure of the document with frames.
   \subsection{Compiling the PDF}
 
   Now save your file (with extension .tex), say  beamer.tex, and in your terminal type
 
-  %% $ pdflatex beamer.tex
+  \begin{lstlisting}[language=bash,style=StyleCommand]
+    [> pdflatex beamer.tex
+  \end{lstlisting}
 
   After compiling, use your favourite PDF viewer to see the result,
 
-  %% $ evince beamer.pdf &
+  \begin{lstlisting}[language=bash,style=StyleCommand]
+    [> evince beamer.pdf &
+  \end{lstlisting}
 
   \subsection{Giving Format}
 

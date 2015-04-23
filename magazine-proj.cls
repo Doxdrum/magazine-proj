@@ -117,6 +117,28 @@
   style=StyleListingBasic,
   backgroundcolor=\color{hellgelb}
 }
+\lstdefinestyle{LaTeX}{%
+  language=[LaTeX]TeX,
+  breaklines=true,%default : false 
+  breakindent=10pt,%default: 20pt 
+  linewidth=\linewidth,%default : \linewidth,
+  basicstyle=\ttfamily\small, %footnotesize,% cannot take arguments
+  keywordstyle=\color{blue}\sffamily\bfseries,
+  identifierstyle=\color{black},                                      
+  commentstyle=\color{green!60!black}\itshape,
+  stringstyle=\rmfamily,
+  showspaces=false,%default false
+  showstringspaces=false,%default: true
+  backgroundcolor=\color{yellow!30},
+  frame=single,%default frame=none 
+  rulecolor=\color{red},  
+  % the following must be defined to make hacking work.
+  framerule=0.8pt,%expand outward 
+  framesep=3pt,%expand outward
+  xleftmargin=3.4pt,%to make the frame fits in the text area. 
+  xrightmargin=3.4pt,%to make the frame fits in the text area. 
+  tabsize=2%,%default :8 only influence the lstlisting and lstinline.
+}
 \NewDocumentCommand\colbox{ m m m }{\colorbox{#1}{\textcolor{#2}{#3}}}
 \NewDocumentCommand\maincolor{ O{mittelblau} }{ #1 }
 \NewDocumentCommand\maintextcolor{ O{white} }{ #1 }
