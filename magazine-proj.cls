@@ -54,7 +54,7 @@
 }
 \setlength{\columnsep}{0.5cm}
 \setcounter{DefaultLines}{3}
-%%\ExplSyntaxOn
+\newlength{\VSkipHeight}
 \DeclareRobustCommand\authoredby{By}
 \DeclareRobustCommand\magazinename{Magazine~Project}
 \DeclareRobustCommand\magazinedate{04/2015}
@@ -88,10 +88,10 @@
       \end{spacing}
     \end{multicols}
   \end{bibunit}
-  \let\blindlead=\relax
+  %% \undef{\lead}%%\let\lead=\undefined%relax
+  %% \undef{\blindlead}%%\let\blindlead=\undefined%relax
   \clearpage
 }
-%% \ExplSyntaxOff
 \definecolor{dunkelgrau}{gray}{0.25}
 \definecolor{mittelgrau}{gray}{0.85}
 \definecolor{hellgrau}{gray}{0.93}
@@ -146,8 +146,8 @@
 \NewDocumentCommand\SetMainColor{ m }{\renewcommand*{\maincolor}{#1}}
 \NewDocumentCommand\SetMainTextColor{ m }{\renewcommand*{\maintextcolor}{#1}}
 \let\oldsubsection=\subsection
-\setlength{\fboxsep}{0.2em}
 \DeclareDocumentCommand\subsection{ s m }{
+  \setlength{\fboxsep}{0.2em}
   \oldsubsection*{\colbox{\maincolor}{\maintextcolor}{\parbox{\linewidth-2\fboxsep-2\fboxrule}{#2}}}\noindent{}%
 }
 \NewDocumentCommand\Initial{ m }{
@@ -158,6 +158,32 @@
       \end{minipage}%
     }%
   }{}%
+}
+\NewDocumentCommand\illustrationcomment{ m m m }{%
+  \setlength{\fboxsep}{5pt}%
+  \setlength{\fboxrule}{0.8pt}%
+  \noindent{}%
+  \fcolbox{black}{dunkelgrau}{white}{%
+    \parbox{#1-2\fboxsep-2\fboxrule}{%
+      \begin{flushleft}%
+        \vskip-5pt{}%
+        \textbf{\MakeUppercase{#2}} | #3%
+      \end{flushleft}%
+      \vskip-5pt{}%
+    }%
+  }
+}
+\NewDocumentCommand\illustration{ O{\linewidth} m m m }{%
+  \noindent{}
+  \parbox{#1}{\includegraphics[width=#1]{Pictures/#2}\\[-2px]
+    \illustrationcomment{#1}{#3}{#4}}
+}
+\NewDocumentCommand\headillustration{ m m m }{%
+  \begin{textblock}{1}(0,0)%
+    \illustration[\paperwidth]{#1}{#2}{#3}%
+  \end{textblock}%
+  \settoheight{\VSkipHeight}{\illustration[\paperwidth]{#1}{#2}{#3}}
+  \vspace*{\VSkipHeight}
 }
 \setlist[itemize]{itemsep=0.0em,leftmargin=*,label=\textcolor{\maincolor}{\footnotesize$\blacksquare$}}
 \setlist[enumerate]{itemsep=0.0em,leftmargin=*}

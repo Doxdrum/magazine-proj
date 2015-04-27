@@ -111,51 +111,46 @@ basicstyle=\ttfamily\bfseries]|#1|%
   \SetMainTextColor{#3}%
 }
 \newcommand{\fcolbox}[4]{%
-\fcolorbox{#1}{#2}{\textcolor{#3}{#4}}%
+  \fcolorbox{#1}{#2}{\textcolor{#3}{#4}}%
 }
-\newcommand{\Bildunterschrift}[3]
-{%
-\setlength{\fboxsep}{5pt}%
-\setlength{\fboxrule}{0.8pt}%
-\noindent{}%
-\fcolbox{black}{dunkelgrau}{white}{%
-\parbox{#1-2\fboxsep-2\fboxrule}{%
-\begin{flushleft}%
-\vskip-5pt{}%
-\textbf{\MakeUppercase{#2}} | #3%
-\end{flushleft}%
-\vskip-5pt{}%
-}%
-}%
+\newcommand{\Bildunterschrift}[3]{%
+  \setlength{\fboxsep}{5pt}%
+  \setlength{\fboxrule}{0.8pt}%
+  \noindent{}%
+  \fcolbox{black}{dunkelgrau}{white}{%
+    \parbox{#1-2\fboxsep-2\fboxrule}{%
+      \begin{flushleft}%
+        \vskip-5pt{}%
+        \textbf{\MakeUppercase{#2}} | #3%
+      \end{flushleft}%
+      \vskip-5pt{}%
+    }%
+  }%
 }
-\newcommand{\BildInternal}[4][\linewidth]
-{%
-\includegraphics[width=#1]{Pictures/#2}\\[-2px]
-\Bildunterschrift{#1}{#3}{#4}\\
+\newcommand{\BildInternal}[4][\linewidth]{%
+  \includegraphics[width=#1]{Pictures/#2}\\[-2px]
+  \Bildunterschrift{#1}{#3}{#4}%\\
 }
-\newcommand{\Bild}[4][\linewidth]
-{%
-\noindent{}%
-\parbox{#1}{\BildInternal[#1]{#2}{#3}{#4}}%
+\newcommand{\Bild}[4][\linewidth]{%
+  \noindent{}%
+  \parbox{#1}{\BildInternal[#1]{#2}{#3}{#4}}%
 }
-\newlength{\VSkipHeight}
-\newcommand{\BildAbs}[3]
-{%
-\begin{textblock}{1}(0,0)%
-\Bild[\paperwidth]{#1}{#2}{#3}%
-\end{textblock}%
-\settoheight{\VSkipHeight}{%
-\BildInternal[\paperwidth]{#1}{#2}{#3}%
-}%
-%%\addtolength{\VSkipHeight}{-3em}%
-\vspace*{\VSkipHeight}%
+%% \newlength{\VSkipHeight}
+\newcommand{\BildAbs}[3]{%
+  \begin{textblock}{1}(0,0)%
+    \Bild[\paperwidth]{#1}{#2}{#3}%
+  \end{textblock}%
+  \settoheight{\VSkipHeight}{%
+    \BildInternal[\paperwidth]{#1}{#2}{#3}%
+  }%
+  %%\addtolength{\VSkipHeight}{-3em}%
+  \vspace*{\VSkipHeight}%
 }
 \newcommand{\sbreak}[1][-1em]{\linebreak[4]\\[#1]}
 \newcommand{\cbreakfill}{\vfill\columnbreak}
 \newcommand{\csbreakfill}{\sbreak\cbreakfill\noindent}
-\newcommand{\Einschub}[3]
-{%
-\begin{wrapfigure}[#1]{#2}{#3}
-\vfill
-\end{wrapfigure}
+\newcommand{\Einschub}[3]{%
+  \begin{wrapfigure}[#1]{#2}{#3}
+    \vfill
+  \end{wrapfigure}
 }
